@@ -7,9 +7,10 @@ import ProjectCard from './components/ProjectCard'
 import SkillItem from './components/SkillItem'
 import ContactItem from './components/ContactItem'
 import LanguageSwitch from './components/LanguageSwitch'
+import perfil from './assets/perfil.png'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [language, setLanguage] = useState('en')
   const [activeSection, setActiveSection] = useState('about')
 
@@ -43,32 +44,32 @@ function App() {
 
   const projects = [
     {
-      title: language === 'en' ? "E-commerce Platform" : "Plataforma de Comercio Electrónico",
+      title: language === 'en' ? "Cultural center" : "Centro cultural",
       description: language === 'en' 
-        ? "A full-featured online store with user authentication, product catalog, and payment integration."
-        : "Una tienda en línea completa con autenticación de usuarios, catálogo de productos e integración de pagos.",
-      image: "https://via.placeholder.com/300x200?text=E-commerce+Platform",
-      link: "https://example.com/ecommerce",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"]
+        ? "platform that allows users to purchase tickets for events with numbered seats, access conventions and reserve stands for entrepreneurs."
+        : "Plataforma que permite a los usuarios comprar tickets para eventos con asientos numerados, acceder a convenciones y reservar stands para emprendedores.",
+      image: "https://i.imgur.com/yt6yiEH.png",
+      link: "https://passwave.onrender.com/",
+      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL",  "JWT"]
     },
     {
-      title: language === 'en' ? "Task Management App" : "Aplicación de Gestión de Tareas",
+      title: language === 'en' ? "HomeBanking" : "HomeBankig",
       description: language === 'en'
-        ? "A collaborative task management tool with real-time updates and team features."
-        : "Una herramienta colaborativa de gestión de tareas con actualizaciones en tiempo real y funciones de equipo.",
-      image: "https://via.placeholder.com/300x200?text=Task+Management+App",
-      link: "https://example.com/taskmanager",
-      technologies: ["React", "Firebase", "Tailwind CSS", "Redux"]
+        ? "A secure platform to manage bank accounts, make transfers, request loans, manage cards and make payments with it."
+        : "Una plataforma segura para gestionar cuentas bancarias, realizar transferencias, pedir prestamos administrar tarjetas y relaizar pagos con ella.",
+      image: "https://i.imgur.com/AXxErHB.png",
+      link: "https://homebankig-frontend.onrender.com/",
+      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL", "JWT"]
     }
   ]
 
-  const skills = ["React", "Tailwind CSS", "JavaScript", "Node.js", "MongoDB", "Git", "RESTful APIs", "Redux"]
+  const skills = ["React", "Tailwind CSS", "JavaScript", "Java", "Spring", "PostgreSQL", "JWT", "Git","GitHub", "Vite", "Redux", "Postman"]
 
   const contactLinks = [
-    { icon: FaGithub, link: "https://github.com/yourusername", label: "GitHub" },
-    { icon: FaLinkedin, link: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
+    { icon: FaGithub, link: "https://github.com/LudwingValecillos", label: "GitHub" },
+    { icon: FaLinkedin, link: "https://www.linkedin.com/in/ludwingvalecillos/", label: "LinkedIn" },
     { icon: FaFileAlt, link: "/path-to-your-cv.pdf", label: language === 'en' ? "CV" : "Currículum" },
-    { icon: FaEnvelope, link: "mailto:your.email@example.com", label: language === 'en' ? "Email" : "Correo" }
+    { icon: FaEnvelope, link: "mailto:ludwingvaldev@gmail.com", label: language === 'en' ? "Email" : "Correo" }
   ]
 
   return (
@@ -123,11 +124,11 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 mb-8">
+          <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8 mb-8 ">
             <motion.img
-              src="https://via.placeholder.com/300"
+              src={perfil}
               alt="Ludwing Valecillos"
-              className="w-64 h-64 rounded-full object-cover shadow-lg"
+              className="w-64 h-64 rounded-full duration-500 object-cover shadow-2xl bg-[#DBD3D3] border-4 border-black dark:border-white dark:bg-[#464646]"
               whileHover={{ scale: 1.05 }}
             />
             <div>
@@ -136,8 +137,8 @@ function App() {
               </h2>
               <p className="text-lg leading-relaxed">
                 {language === 'en' 
-                  ? "I'm a passionate web developer with experience in React, Tailwind CSS, and more. I love creating beautiful and functional web applications that solve real-world problems. With a keen eye for design and a strong foundation in modern web technologies, I strive to build intuitive and engaging user experiences."
-                  : "Soy un desarrollador web apasionado con experiencia en React, Tailwind CSS y más. Me encanta crear aplicaciones web hermosas y funcionales que resuelvan problemas del mundo real. Con un ojo agudo para el diseño y una sólida base en tecnologías web modernas, me esfuerzo por construir experiencias de usuario intuitivas y atractivas."}
+                  ? "I am a Full Stack Developer specialized in React, Tailwind CSS and Spring Boot, with experience in creating scalable and secure web applications. I have worked on projects such as QuantumBank and WaveCenter, where I have applied agile development practices and effective team communication. My focus is on user experience and implementing innovative technological solutions that solve real problems."
+                  : "Soy un Desarrollador Full Stack especializado en React, Tailwind CSS y Spring Boot  , con experiencia en la creación de aplicaciones web escalables y seguras. He trabajado en proyectos como QuantumBank y WaveCenter, donde he aplicado prácticas de desarrollo ágil y comunicación efectiva en equipo. Mi enfoque se centra en la experiencia del usuario y en la implementación de soluciones tecnológicas innovadoras que resuelvan problemas reales.."}
               </p>
             </div>
           </div>
@@ -151,10 +152,10 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 className="text-4xl font-semibold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+          <h2 className="text-4xl font-semibold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
             {language === 'en' ? 'Projects' : 'Proyectos'}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
             {projects.map((project, index) => (
               <ProjectCard key={index} project={project} />
             ))}
@@ -179,6 +180,7 @@ function App() {
           </div>
         </motion.section>
 
+      
         <motion.section
           id="contact"
           ref={contactRef}

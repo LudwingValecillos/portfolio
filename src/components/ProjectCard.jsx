@@ -3,11 +3,11 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 const ProjectCard = ({ project }) => (
   <motion.div 
-    className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg overflow-hidden"
+    className="bg-white dark:bg-gray-800 p-6 duration-400 rounded-lg shadow-lg overflow-hidden border-2 border-blue-500 dark:border-gray-600"
     whileHover={{ scale: 1.03 }}
     transition={{ type: "spring", stiffness: 300 }}
   >
-    <img src={project.image} alt={project.title} className="w-full h-48 object-cover mb-4 rounded" />
+    <img src={project.image} alt={project.title} className="w-full h- object-cover mb-4 rounded" />
     <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
     <p className="mb-4">{project.description}</p>
     <div className="flex flex-wrap gap-2 mb-4">
