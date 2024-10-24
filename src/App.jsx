@@ -68,7 +68,7 @@ function App() {
   const contactLinks = [
     { icon: FaGithub, link: "https://github.com/LudwingValecillos", label: "GitHub" },
     { icon: FaLinkedin, link: "https://www.linkedin.com/in/ludwingvalecillos/", label: "LinkedIn" },
-    { icon: FaFileAlt, link: "/public/Ludwing Valecillos cv.pdf", label: language === 'en' ? "CV" : "Currículum" },
+    { icon: FaFileAlt, link: "../src/assets/LudwingValecillosCV.pdf", label: language === 'en' ? "CV" : "Currículum" },
     { icon: FaEnvelope, link: "mailto:ludwingvaldev@gmail.com", label: language === 'en' ? "Email" : "Correo" }
   ]
 
