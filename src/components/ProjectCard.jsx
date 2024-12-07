@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaExternalLinkAlt } from 'react-icons/fa'
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
 
 const ProjectCard = ({ project }) => (
   <motion.div 
@@ -15,14 +15,24 @@ const ProjectCard = ({ project }) => (
         <span key={techIndex} className="px-2 py-1 bg-blue-500 text-white rounded text-sm">{tech}</span>
       ))}
     </div>
-    <a 
-      href={project.link} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
-    >
-      View Project <FaExternalLinkAlt className="ml-2" />
-    </a>
+    <div className='flex justify-between w-full'>
+      <a 
+        href={project.link} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
+      >
+        View Project <FaExternalLinkAlt className="ml-2" />
+      </a>
+      <a 
+        href={project.github} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="inline-flex items-center text-blue-500 hover:text-blue-600 transition-colors"
+      >
+        View code <FaGithub className="w-6 h-6 ml-2" />
+      </a>
+    </div>
   </motion.div>
 )
 

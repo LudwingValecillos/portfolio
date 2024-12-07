@@ -50,7 +50,8 @@ function App() {
         : "Plataforma que permite a los usuarios comprar tickets para eventos con asientos numerados, acceder a convenciones y reservar stands para emprendedores.",
       image: "https://i.imgur.com/yt6yiEH.png",
       link: "https://passwave.onrender.com/",
-      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL",  "JWT"]
+      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL",  "JWT"],
+      github: "https://github.com/LudwingValecillos/PassWave"
     },
     {
       title: language === 'en' ? "HomeBanking" : "HomeBankig",
@@ -59,11 +60,22 @@ function App() {
         : "Una plataforma segura para gestionar cuentas bancarias, realizar transferencias, pedir prestamos administrar tarjetas y relaizar pagos con ella.",
       image: "https://i.imgur.com/AXxErHB.png",
       link: "https://homebankig-frontend.onrender.com/",
-      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL", "JWT"]
-    }
+      technologies: ["React", "Tailwind CSS","Redux", "Java", "Spring Boot","Spring Security", "PostgreSQL", "JWT"],
+      github: "https://github.com/LudwingValecillos/HomeBankig-FrontEnd"
+    },
+    {
+      title: language === 'en' ? "HomeBanking" : "HomeBankig",
+      description: language === 'en'
+        ? "I built an e-commerce platform for a supermarket with an API of 200+ products, detailed product pages, a cart system, and an integrated payment gateway."
+        : "Creé una plataforma de comercio electrónico para un supermercado con una API de más de 200 productos, páginas de detalles de productos, un sistema de carrito y una pasarela de pago integrada.",
+      image: "https://i.imgur.com/YaipjNn.png",
+      link: "https://ludwingvalecillos.github.io/E-comerceMarketShop/",
+      technologies: ["HTML", "CSS","javaScript"],
+      github: "https://github.com/LudwingValecillos/E-comerceMarketShop"
+    },
   ]
 
-  const skills = ["React", "Tailwind CSS", "JavaScript", "Java", "Spring", "PostgreSQL", "JWT", "Git","GitHub", "Vite", "Redux", "Postman"]
+  const skills = ["React", "Tailwind CSS", "JavaScript", "Java", "Spring", "PostgreSQL", "JWT", "Git","GitHub", "Vite", "Redux", "Postman", "TypeScript", "HTML", "CSS"]
 
   const contactLinks = [
     { icon: FaGithub, link: "https://github.com/LudwingValecillos", label: "GitHub" },
