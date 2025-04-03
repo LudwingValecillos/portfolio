@@ -93,17 +93,13 @@ const SKILL_ICONS = {
     Icon: SiSupabase,
     color: "text-[#3ECF8E]",
   },
-  "Next.js": {
-    Icon: SiNextdotjs,
-    color: "text-[#000000] dark:text-white",
-  },
-  Node: {
-    Icon: FaNodeJs,
-    color: "text-[#339933]",
-  },
   Express: {
     Icon: FaNodeJs,
     color: "text-[#339933]",
+  },
+  "Next.js": {
+    Icon: SiNextdotjs,
+    color: "text-[#000000] dark:text-white",
   },
 };
 
@@ -128,7 +124,7 @@ const SkillItem = ({ skill }) => {
         initial={false}
       />
       <div className="relative flex flex-col items-center gap-3">
-        <div className="p-3 rounded-lg bg-white/5 dark:bg-gray-700/30 group-hover:bg-white/10 dark:group-hover:bg-gray-700/40 transition-colors duration-300">
+        <div className="p-3 rounded-lg  group-hover:bg-white/10 dark:group-hover:bg-gray-700/40 transition-colors duration-300">
           <Icon
             className={`w-8 h-8 ${color} transform group-hover:scale-110 transition-transform duration-300`}
           />

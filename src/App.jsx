@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import NavItem from "./components/NavItem";
 import ProjectCard from "./components/ProjectCard";
 import SkillItem from "./components/SkillItem";
@@ -31,6 +33,14 @@ function App() {
   const { ref: contactRef, inView: contactInView } = useInView({
     threshold: 0.5,
   });
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   useEffect(() => {
     if (aboutInView) setActiveSection("about");
@@ -88,18 +98,15 @@ function App() {
       github: null,
     },
     {
-      title: language === "en" ? "Lo de nacho carniceria" : "Lo de nacho carniceria",
+      title:
+        language === "en" ? "Lo de nacho carniceria" : "Lo de nacho carniceria",
       description:
         language === "en"
           ? "Web platform for a butcher shop, with a customer management system, sales and progress tracking."
           : "Plataforma web para una carniceria, con un sistema de gestión de productos, ventas y seguimiento de progresos.",
       image: "https://i.imgur.com/4NxmcOb.png",
       link: null,
-      technologies: [
-        "React",
-        "Tailwind CSS",
-        "TypeScript",
-      ],
+      technologies: ["React", "Tailwind CSS", "TypeScript"],
       github: null,
     },
     {
@@ -143,7 +150,7 @@ function App() {
       github: "https://github.com/LudwingValecillos/HomeBankig-FrontEnd",
     },
     {
-      title: language === "en" ? "HomeBanking" : "HomeBankig",
+      title: language === "en" ? "Supermarket" : "Supermercado",
       description:
         language === "en"
           ? "I built an e-commerce platform for a supermarket with an API of 200+ products, detailed product pages, a cart system, and an integrated payment gateway."
@@ -202,7 +209,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-500">
-      <nav className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 shadow-lg p-4 z-10 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/30">
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ type: "spring", stiffness: 100 }}
+        className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 shadow-lg p-4 z-10 backdrop-blur-lg border-b border-gray-200/20 dark:border-gray-700/30"
+      >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <motion.h1
             className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
@@ -248,7 +260,7 @@ function App() {
             </motion.button>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       <main className="max-w-6xl mx-auto mt-24 px-4">
         <motion.section
@@ -272,7 +284,12 @@ function App() {
                 className="relative w-64 h-64 rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
               />
             </motion.div>
-            <div className="flex-1">
+            <motion.div
+              className="flex-1"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+            >
               <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
                 {language === "en" ? "About Me" : "Sobre Mí"}
               </h2>
@@ -281,7 +298,7 @@ function App() {
                   ? "I am a Full Stack Developer specialized in React, Tailwind CSS and Spring Boot, with experience in creating scalable and secure web applications. I have worked on projects such as QuantumBank and WaveCenter, where I have applied agile development practices and effective team communication. My focus is on user experience and implementing innovative technological solutions that solve real problems."
                   : "Soy un Desarrollador Full Stack especializado en React, Tailwind CSS y Spring Boot, con experiencia en la creación de aplicaciones web escalables y seguras. He trabajado en proyectos como QuantumBank y WaveCenter, donde he aplicado prácticas de desarrollo ágil y comunicación efectiva en equipo. Mi enfoque se centra en la experiencia del usuario y en la implementación de soluciones tecnológicas innovadoras que resuelvan problemas reales."}
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -293,12 +310,26 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+          <motion.h2
+            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             {language === "en" ? "Projects" : "Proyectos"}
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
           </div>
         </motion.section>
@@ -311,12 +342,26 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+          <motion.h2
+            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             {language === "en" ? "Skills" : "Habilidades"}
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
-              <SkillItem key={index} skill={skill} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <SkillItem skill={skill} />
+              </motion.div>
             ))}
           </div>
         </motion.section>
@@ -329,25 +374,44 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+          <motion.h2
+            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             {language === "en" ? "Contact" : "Contacto"}
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {contactLinks.map((item, index) => (
-              <ContactItem key={index} item={item} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ContactItem item={item} />
+              </motion.div>
             ))}
           </div>
         </motion.section>
       </main>
 
-      <footer className="py-8 text-center text-gray-600 dark:text-gray-400 border-t border-gray-200/20 dark:border-gray-700/30">
+      <motion.footer
+        className="py-8 text-center text-gray-600 dark:text-gray-400 border-t border-gray-200/20 dark:border-gray-700/30"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+      >
         <p>
           &copy; {new Date().getFullYear()} Ludwing Valecillos.{" "}
           {language === "en"
             ? "All rights reserved."
             : "Todos los derechos reservados."}
         </p>
-      </footer>
+      </motion.footer>
     </div>
   );
 }
