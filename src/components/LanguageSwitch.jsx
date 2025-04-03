@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const LanguageSwitch = ({ language, toggleLanguage }) => (
   <motion.button
@@ -7,8 +8,13 @@ const LanguageSwitch = ({ language, toggleLanguage }) => (
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
   >
-    {language === 'en' ? 'ES' : 'EN'}
+    {language === "en" ? "ES" : "EN"}
   </motion.button>
-)
+);
 
-export default LanguageSwitch
+LanguageSwitch.propTypes = {
+  language: PropTypes.oneOf(["en", "es"]).isRequired,
+  toggleLanguage: PropTypes.func.isRequired,
+};
+
+export default LanguageSwitch;

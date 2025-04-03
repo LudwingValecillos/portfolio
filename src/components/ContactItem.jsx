@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const ContactItem = ({ item }) => (
   <motion.a
@@ -12,6 +13,14 @@ const ContactItem = ({ item }) => (
     <item.icon className="text-4xl mb-2 text-blue-500" />
     <span className="text-lg font-semibold">{item.label}</span>
   </motion.a>
-)
+);
 
-export default ContactItem
+ContactItem.propTypes = {
+  item: PropTypes.shape({
+    icon: PropTypes.elementType.isRequired,
+    link: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default ContactItem;
