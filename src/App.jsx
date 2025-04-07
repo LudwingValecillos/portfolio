@@ -22,6 +22,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [language, setLanguage] = useState("en");
   const [activeSection, setActiveSection] = useState("about");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { ref: aboutRef, inView: aboutInView } = useInView({ threshold: 0.5 });
   const { ref: projectsRef, inView: projectsInView } = useInView({
@@ -224,7 +225,38 @@ function App() {
           >
             Ludwing Valecillos
           </motion.h1>
-          <div className="flex items-center space-x-6">
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6 justify-center">
             {["about", "projects", "skills", "contact"].map((section) => (
               <NavItem
                 key={section}
@@ -260,6 +292,53 @@ function App() {
             </motion.button>
           </div>
         </div>
+
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden mt-4 space-y-4"
+          >
+            {["about", "projects", "skills", "contact"].map((section) => (
+              <NavItem
+                key={section}
+                id={section}
+                title={
+                  language === "en"
+                    ? section.charAt(0).toUpperCase() + section.slice(1)
+                    : {
+                        about: "Sobre mí",
+                        projects: "Proyectos",
+                        skills: "Habilidades",
+                        contact: "Contacto",
+                      }[section]
+                }
+                activeSection={activeSection}
+                className="block w-full text-center py-2"
+              />
+            ))}
+            <div className="flex justify-center space-x-4">
+              <LanguageSwitch
+                language={language}
+                toggleLanguage={toggleLanguage}
+              />
+              <motion.button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200/20 dark:border-gray-700/30 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {darkMode ? (
+                  <FaSun className="text-yellow-400" />
+                ) : (
+                  <FaMoon className="text-gray-700" />
+                )}
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
       </motion.nav>
 
       <main className="max-w-6xl mx-auto mt-24 px-4">
@@ -273,7 +352,7 @@ function App() {
         >
           <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12">
             <motion.div
-              className="relative"
+              className="relative w-48 h-48 md:w-64 md:h-64"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
@@ -281,19 +360,19 @@ function App() {
               <img
                 src={perfil}
                 alt="Ludwing Valecillos"
-                className="relative w-64 h-64 rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
+                className="relative w-full h-full rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
               />
             </motion.div>
             <motion.div
-              className="flex-1"
+              className="flex-1 text-center md:text-left"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
                 {language === "en" ? "About Me" : "Sobre Mí"}
               </h2>
-              <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+              <p className="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
                 {language === "en"
                   ? "I am a Full Stack Developer specialized in React, Tailwind CSS and Spring Boot, with experience in creating scalable and secure web applications. I have worked on projects such as QuantumBank and WaveCenter, where I have applied agile development practices and effective team communication. My focus is on user experience and implementing innovative technological solutions that solve real problems."
                   : "Soy un Desarrollador Full Stack especializado en React, Tailwind CSS y Spring Boot, con experiencia en la creación de aplicaciones web escalables y seguras. He trabajado en proyectos como QuantumBank y WaveCenter, donde he aplicado prácticas de desarrollo ágil y comunicación efectiva en equipo. Mi enfoque se centra en la experiencia del usuario y en la implementación de soluciones tecnológicas innovadoras que resuelvan problemas reales."}
@@ -311,7 +390,7 @@ function App() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <motion.h2
-            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -343,14 +422,14 @@ function App() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <motion.h2
-            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             {language === "en" ? "Skills" : "Habilidades"}
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
@@ -375,14 +454,14 @@ function App() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <motion.h2
-            className="text-4xl font-bold mb-12 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center md:text-left bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
             {language === "en" ? "Contact" : "Contacto"}
           </motion.h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8">
             {contactLinks.map((item, index) => (
               <motion.div
                 key={index}
