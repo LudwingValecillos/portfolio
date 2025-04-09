@@ -68,13 +68,35 @@ function App() {
 
   const projects = [
     {
+      title: language === "en" ? "NextCode" : "NextCode",
+      description:
+        language === "en"
+          ? "Landing page offering my services as a web developer."
+          : "Landing page ofreciendo mis servicios como desarrollador web.",
+      image: "https://i.imgur.com/1K7dGaa.png",
+      link: "https://nextcode.com.ar/",
+      technologies: ["Tailwind CSS", "HTML", "CSS", "Vite", "React"],
+      github: "https://github.com/LudwingValecillos/NextCodeLanding",
+    },
+    {
+      title: language === "en" ? "Import Teknology" : "Import Teknology",
+      description:
+        language === "en"
+          ? "Landing page for a company specialized in the sale of cell phone accessories."
+          : "Landing page para una empresa especializada en la venta de accesorios para celulares.",
+      image: "https://i.imgur.com/yilyvWa.png",
+      link: "https://symphonious-sunburst-afc60e.netlify.app/",
+      technologies: ["Tailwind CSS", "TypeScript", "HTML", "CSS", "Vite", "React"],
+      github: "https://github.com/LudwingValecillos/mobile-premium-vista",
+    },
+    {
       title: language === "en" ? "M-Store" : "M-Store",
       description:
         language === "en"
           ? "Landing page for a company specialized in the installation of security cameras."
           : "Landing page para una empresa especializada en la instalación de cámaras de seguridad.",
       image: "https://i.imgur.com/oeqnQZp.png",
-      link: "https://m-security1.netlify.app/",
+      link: "https://tiendamstore.com.ar/----------------------",
       technologies: ["Next.js", "Tailwind CSS", "TypeScript", "HTML", "CSS"],
       github: "https://github.com/LudwingValecillos/landingsecurity1",
     },
