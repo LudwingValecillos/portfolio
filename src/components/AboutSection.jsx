@@ -58,7 +58,7 @@ const AboutSection = ({ language, aboutRef }) => {
                 <div className="body-medium text-gray-600 dark:text-gray-300 space-y-3">
                   <p>
                     {language === "en"
-                      ? "I'm a Full Stack Developer with over 3 years of experience building efficient, secure, and scalable web applications."
+                      ? "I'm a Full Stack Developer with experience building efficient, secure, and scalable web applications."
                       : "Soy Desarrollador Full Stack con experiencia construyendo aplicaciones web eficientes, seguras y escalables."}
                   </p>
 

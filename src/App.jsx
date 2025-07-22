@@ -27,7 +27,7 @@ import {
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("es");
   const [activeSection, setActiveSection] = useState("about");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

@@ -202,13 +202,6 @@ const ContactForm = ({ language }) => {
         </motion.button>
       </form>
 
-      <div className="mt-6 text-center">
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          {language === "en" 
-            ? "I typically respond within 24 hours during business days."
-            : "Normalmente respondo dentro de 24 horas en días laborables."}
-        </p>
-      </div>
     </motion.div>
   );
 };
